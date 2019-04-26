@@ -23,8 +23,8 @@ train_data_dir = './data/train'
 validation_data_dir = './data/validation'
 
 img_width, img_height = 240, 240
-nb_train_samples = 215
-nb_validation_samples = 100
+nb_train_samples = 450
+nb_validation_samples = 215
 nb_filters1 = 32
 nb_filters2 = 64
 conv1_size = 3

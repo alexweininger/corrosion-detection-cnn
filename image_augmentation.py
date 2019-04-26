@@ -10,7 +10,7 @@ from PIL import Image
 # out_path = '../images/Synthetic_Images/'
 # img_path = '../images/Original_Images/IR_Images/'
 
-out_path = 'data/train/non-corroded/'
+out_path = 'data/train/notcorroded/'
 img_path = 'data/train/notcorroded/'
 
 # for each image in the images dir, create a few syntheic ones

@@ -20,7 +20,7 @@ def predict(file):
     answer = 'corroded'
   else:
     print("Predicted answer: notcorroded")
-    answer = 'corroded'
+    answer = 'notcorroded'
 
   return answer
 
@@ -33,7 +33,7 @@ for i, ret in enumerate(os.walk('./data/validation/notcorroded')):
   for i, filename in enumerate(ret[2]):
     if filename.startswith("."):
       continue
-    print("Label: not Corroded")
+    print("Label: notcorroded")
     result = predict(ret[0] + '/' + filename)
     if result == "notcorroded":
       tn += 1
