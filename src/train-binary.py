@@ -5,25 +5,13 @@ from keras.models import Sequential, Model
 from keras.layers import Dropout, Flatten, Dense, Activation
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras import callbacks
-import pandas as pd
-
-DEV = False
-argvs = sys.argv
-argc = len(argvs)
-
-if argc > 1 and (argvs[1] == "--development" or argvs[1] == "-d"):
-  DEV = True
-
-if DEV:
-  epochs = 4
-else:
-  epochs = 3
 
 train_data_dir = './data/train'
 validation_data_dir = './data/validation'
 
+epochs = 3
 img_width, img_height = 240, 240
-nb_train_samples = 450
+nb_train_samples = 425
 nb_validation_samples = 215
 nb_filters1 = 32
 nb_filters2 = 64
@@ -32,7 +20,7 @@ conv2_size = 2
 pool_size = 2
 classes_num = 2
 batch_size = 32
-lr = 0.001
+lr = 0.0001
 
 model = Sequential()
 model.add(Conv2D(nb_filters1, (conv1_size, conv1_size), padding="same", input_shape=(img_width, img_height, 3)))
@@ -49,8 +37,7 @@ model.add(Activation("relu"))
 model.add(Dropout(0.5))
 model.add(Dense(classes_num, activation='softmax'))
 
-model.compile(loss='categorical_crossentropy',
-              optimizer=optimizers.RMSprop(lr=lr),
+model.compile(loss='categorical_crossentropy', optimizer=optimizers.RMSprop(lr=lr),
               metrics=['accuracy'])
 
 train_datagen = ImageDataGenerator(
@@ -60,8 +47,7 @@ train_datagen = ImageDataGenerator(
     rotation_range=20,
     horizontal_flip=True)
 
-test_datagen = ImageDataGenerator(
-    rescale=1. / 255)
+test_datagen = ImageDataGenerator(rescale=1. / 255)
 
 train_generator = train_datagen.flow_from_directory(
     train_data_dir,
