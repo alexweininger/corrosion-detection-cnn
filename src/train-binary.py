@@ -5,6 +5,7 @@ from keras.models import Sequential, Model
 from keras.layers import Dropout, Flatten, Dense, Activation
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras import callbacks
+import pandas as pd
 
 DEV = False
 argvs = sys.argv
@@ -31,7 +32,7 @@ conv2_size = 2
 pool_size = 2
 classes_num = 2
 batch_size = 32
-lr = 0.0004
+lr = 0.001
 
 model = Sequential()
 model.add(Conv2D(nb_filters1, (conv1_size, conv1_size), padding="same", input_shape=(img_width, img_height, 3)))
@@ -56,6 +57,7 @@ train_datagen = ImageDataGenerator(
     rescale=1. / 255,
     shear_range=0.2,
     zoom_range=0.2,
+    rotation_range=20,
     horizontal_flip=True)
 
 test_datagen = ImageDataGenerator(
@@ -65,7 +67,8 @@ train_generator = train_datagen.flow_from_directory(
     train_data_dir,
     target_size=(img_height, img_width),
     batch_size=batch_size,
-    class_mode='categorical')
+    class_mode='categorical',
+    classes=['corroded', 'notcorroded'])
 
 validation_generator = test_datagen.flow_from_directory(
     validation_data_dir,
@@ -79,11 +82,12 @@ cbks = [tb_cb]
 
 model.fit_generator(
     train_generator,
-    samples_per_epoch=nb_train_samples,
     epochs=epochs,
     validation_data=validation_generator,
     callbacks=cbks,
-    validation_steps=10)
+    steps_per_epoch=10,
+    validation_steps=10,
+    class_weight={0: 0.2, 1: 0.8})
 
 target_dir = './models/'
 if not os.path.exists(target_dir):
