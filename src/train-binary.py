@@ -22,7 +22,7 @@ train_data_dir = './data/train'
 validation_data_dir = './data/validation'
 
 img_width, img_height = 240, 240
-nb_train_samples = 215
+nb_train_samples = 250
 nb_validation_samples = 100
 nb_filters1 = 32
 nb_filters2 = 64
@@ -30,8 +30,8 @@ conv1_size = 3
 conv2_size = 2
 pool_size = 2
 classes_num = 2
-batch_size = 32
-lr = 0.0004
+batch_size = 50
+lr = 0.01
 
 model = Sequential()
 model.add(Conv2D(nb_filters1, (conv1_size, conv1_size), padding="same", input_shape=(img_width, img_height, 3)))
@@ -65,6 +65,7 @@ train_generator = train_datagen.flow_from_directory(
     train_data_dir,
     target_size=(img_height, img_width),
     batch_size=batch_size,
+    classes=['noncorroded', 'corroded'],
     class_mode='categorical')
 
 validation_generator = test_datagen.flow_from_directory(

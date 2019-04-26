@@ -2,11 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\data",
-    "\\data\\Original_Images",
-    "\\models",
-    "\\src",
-    "\\tf-log"
+    "\\data\\train",
+    "\\data\\train\\noncorroded",
+    "\\data\\validation",
+    "\\src"
   ],
-  "SelectedNode": "\\images",
+  "SelectedNode": "\\data\\train\\noncorroded",
   "PreviewInSolutionExplorer": false
 }
