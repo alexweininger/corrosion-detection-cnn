@@ -5,6 +5,7 @@ from keras.models import Sequential, Model
 from keras.layers import Dropout, Flatten, Dense, Activation
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras import callbacks
+from sklearn.metrics import f1_score
 
 train_data_dir = './data/train'
 validation_data_dir = './data/validation'

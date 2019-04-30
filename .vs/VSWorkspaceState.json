@@ -2,11 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\data",
-    "\\data\\train",
+    "\\data\\Original_Images",
     "\\data\\train\\noncorroded",
     "\\data\\validation",
+    "\\models",
     "\\src"
   ],
-  "SelectedNode": "\\data\\train\\noncorroded",
+  "SelectedNode": "\\data\\Original_Images\\IR_Images_Ground_Truths",
   "PreviewInSolutionExplorer": false
 }
