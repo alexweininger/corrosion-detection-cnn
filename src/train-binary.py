@@ -5,6 +5,7 @@ from keras.models import Sequential, Model
 from keras.layers import Dropout, Flatten, Dense, Activation
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras import callbacks
+from sklearn.metrics import f1_score
 
 train_data_dir = './data/train'
 validation_data_dir = './data/validation'
@@ -19,7 +20,7 @@ conv1_size = 3
 conv2_size = 2
 pool_size = 2
 classes_num = 2
-batch_size = 32
+batch_size = 1
 lr = 0.0001
 
 model = Sequential()
