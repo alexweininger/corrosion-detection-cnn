@@ -20,7 +20,7 @@ conv1_size = 3
 conv2_size = 2
 pool_size = 2
 classes_num = 2
-batch_size = 1
+batch_size = 32
 lr = 0.0001
 
 model = Sequential()
