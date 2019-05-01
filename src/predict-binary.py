@@ -40,14 +40,17 @@ for i, ret in enumerate(os.walk('./data/validation/notcorroded')):
     else:
       fp += 1
 
+accuracy, count = 0, 0
 for i, ret in enumerate(os.walk('./data/validation/corroded')):
   for i, filename in enumerate(ret[2]):
+    count += 1
     if filename.startswith("."):
       continue
     print("Label:  corroded")
     result = predict(ret[0] + '/' + filename)
     if result == "corroded":
       tp += 1
+      accuracy += 1
     else:
       fn += 1
 
@@ -66,6 +69,6 @@ else:
 recall = tp / (tp + fn)
 print("Precision: ", precision)
 print("Recall: ", recall)
-
+print("Accuracy: ", float(accuracy/count))
 f_measure = (2 * recall * precision) / (recall + precision)
 print("F-measure: ", f_measure)
